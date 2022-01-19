@@ -33,7 +33,7 @@ public class Title_Exit : MonoBehaviour
             HideUI();
         }
 
-        if (NowSelect == true && Input.GetButtonDown("Jump") || NowSelect == true && Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (NowSelect == true && Input.GetKeyDown(KeyCode.JoystickButton0) || NowSelect == true && Input.GetKeyDown(KeyCode.Return))
         {
             Quit();
         }
