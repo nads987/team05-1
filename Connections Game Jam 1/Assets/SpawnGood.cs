@@ -43,7 +43,7 @@ public class SpawnGood : MonoBehaviour
         }
         GameObject a = Instantiate(spherePrefab) as GameObject;
         a.GetComponent<SpriteRenderer>().color = currColor;
-        a.transform.position = new Vector2(Random.Range(-screenBounds.x * 1.5f, screenBounds.x * 1.5f), Random.Range(-screenBounds.y * 1.5f, screenBounds.y * 1.5f));
+        a.transform.position = new Vector2(Random.Range(-screenBounds.x * .5f, screenBounds.x * .5f), Random.Range(-screenBounds.y * .5f, screenBounds.y * .5f));
     }
    
     IEnumerator Wave()
