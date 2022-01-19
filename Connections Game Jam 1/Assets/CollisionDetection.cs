@@ -15,20 +15,22 @@ public class CollisionDetection : MonoBehaviour
     }
     private void Update()
     {
-        float distance = ((Vector2)sphere.position - positions[0]).magnitude;
-        if(distance > circleDiameter)
-        {
-            Vector2 direction = ((Vector2)sphere.position - positions[0]).normalized;
+        
+            float distance = ((Vector2)sphere.position - positions[0]).magnitude;
+            if (distance > circleDiameter)
+            {
+                Vector2 direction = ((Vector2)sphere.position - positions[0]).normalized;
 
-            positions.Insert(0, positions[0] + direction * circleDiameter);
-            positions.RemoveAt(positions.Count - 1);
-            distance -= circleDiameter;
-        }
+                positions.Insert(0, positions[0] + direction * circleDiameter);
+                positions.RemoveAt(positions.Count - 1);
+                distance -= circleDiameter;
+            }
 
-        for(int i=0;i<spheres.Count;i++)
-        {
-            spheres[i].position = Vector2.Lerp(positions[i + 1], positions[i], distance / circleDiameter);
-        }
+            for (int i = 0; i < spheres.Count; i++)
+            {
+                spheres[i].position = Vector2.Lerp(positions[i + 1], positions[i], distance / circleDiameter);
+            }
+        
     }
     public void AddCircle()
     {
@@ -41,8 +43,15 @@ public class CollisionDetection : MonoBehaviour
     {
         //Transform circle = Instantiate(sphere, positions[positions.Count - 1], Quaternion.identity, transform);
 
-       // spheres.RemoveAt(spheres.Count-1);
-        //positions.RemoveAt(spheres.Count-1);
+        
+        if (spheres.Count > 1)
+        {
+            spheres.RemoveAt(spheres.Count-1);
+            positions.RemoveAt(spheres.Count-1);
+            Destroy(spheres[spheres.Count-1].gameObject);
+           
+        }
+        
     }
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
